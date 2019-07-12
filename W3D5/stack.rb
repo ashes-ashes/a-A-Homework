@@ -19,4 +19,5 @@ class Stack
     def peek
         @stack[-1]
     end
+    
 end
