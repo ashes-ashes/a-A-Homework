@@ -9,7 +9,6 @@ class GraphNode
 
     def neighbors=(neighbors)
         @neighbors += neighbors
-        neighbors.each { |node| node.neighbors << self }
     end
 
     def inspect
@@ -25,6 +24,7 @@ def bfs(starting_node, target_value)
     while new_nodes == true && !node_queue.empty?
         new_nodes = false
         searchthis = node_queue.shift
+        puts "Visited #{searchthis.value}."
         searchthis.neighbors.each do |node|
             if node.value == target_value
                 return node
