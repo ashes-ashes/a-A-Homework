@@ -7,10 +7,10 @@ class Simon
     @sequence_length = 1
     @game_over = false
     @seq = []
-
   end
 
   def play
+    puts "Let's play Simon!"
     until game_over == true
       take_turn
     end
@@ -18,8 +18,8 @@ class Simon
 
   def take_turn
     show_sequence
-    newseq = require_sequence
-    if newseq.split(" ") == seq
+    require_sequence
+    if @input == seq.join(" ")
       round_success_message
     else
       game_over = true
@@ -28,6 +28,7 @@ class Simon
 
   def show_sequence
     add_random_color
+    sequence_length += 1
     puts seq.join(" ")
     sleep(sequence_length/2)
     system("clear")
@@ -35,8 +36,8 @@ class Simon
 
   def require_sequence
     puts "Enter the sequence."
-    newseq = gets.chomp
-    newseq
+    @input = gets.chomp
+    @input
   end
 
   def add_random_color
