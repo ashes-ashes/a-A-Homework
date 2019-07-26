@@ -2,10 +2,10 @@ class House < ApplicationRecord
     validates :address, presence: true
 
     has_many(
-        :residents
+        :residents,
         class_name: 'Person',
         foreign_key: :house_id,
-        primary key: :id
+        primary_key: :id
     )
 
 end
